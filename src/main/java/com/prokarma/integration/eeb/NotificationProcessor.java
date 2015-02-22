@@ -2,6 +2,6 @@ package com.prokarma.integration.eeb;
 
 public interface NotificationProcessor {
 
-	void process(Notification notification);
+	void process(Notification notification) throws EEBException;
 
 }

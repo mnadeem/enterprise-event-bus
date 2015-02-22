@@ -1,7 +1,9 @@
 package com.prokarma.integration.eeb;
 
+import java.util.concurrent.Future;
+
 public interface Notifier {
 
-	void notifySubscribers(String topic);
+	Future<String> notifySubscribers(String topic);
 
 }

@@ -8,7 +8,7 @@ public class NotificationBrokerBean implements NotificationBroker {
 	private NotificationProcessor processor;
 
 	@Override
-	public void notify(Notification notification) {
+	public void notify(Notification notification) throws EEBException {
 		this.processor.process(notification);
 	}
 }

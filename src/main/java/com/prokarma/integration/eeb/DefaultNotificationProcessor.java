@@ -1,13 +1,25 @@
 package com.prokarma.integration.eeb;
 
+import java.util.Collections;
 import java.util.List;
 
-public class DefaultNotificationProcessor implements NotificationProcessor {
+import javax.ejb.Stateless;
+import javax.inject.Inject;
 
+import org.switchyard.component.bean.Reference;
+
+@Stateless
+public class DefaultNotificationProcessor implements NotificationProcessor {
+	@Inject
 	private MessageStore messageStore;
+	@Inject
 	private NotificationValidator validator;
+	@Inject
+	@Reference
 	private Notifier notifier;
+	@Inject
 	private SubscriptionStore subscriptionStore;
+	@Inject
 	private MessageSubscriptionStore messsageSubscriptionStore;
 
 	@Override
@@ -20,12 +32,10 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 	}
 
 	private List<MessageSubscription> newMessageSubscriptions(Notification notification, List<Subscription> subscriptions, String id) {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.emptyList();
 	}
 
 	private Message newMessage(Notification notification) {
-		// TODO Auto-generated method stub
-		return null;
+		return new Message();
 	}
 }
