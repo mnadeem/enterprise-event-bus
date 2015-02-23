@@ -3,10 +3,10 @@ package com.prokarma.middleware.eeb;
 import java.util.Collections;
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.inject.Named;
 
-@Stateless
+@Named
 public class DefaultNotificationProcessor implements NotificationProcessor {
 	@Inject
 	private MessageStore messageStore;

@@ -1,12 +1,12 @@
 package com.prokarma.middleware.eeb;
 
-import javax.ejb.EJB;
+import javax.inject.Inject;
 
 import org.switchyard.component.bean.Service;
 
 @Service(NotificationBroker.class)
 public class NotificationBrokerBean implements NotificationBroker {
-	@EJB
+	@Inject
 	private NotificationProcessor processor;
 	
 	@Override
