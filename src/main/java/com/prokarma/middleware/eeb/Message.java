@@ -1,4 +1,4 @@
-package com.prokarma.integration.eeb;
+package com.prokarma.middleware.eeb;
 
 public class Message {
 	private String id;
