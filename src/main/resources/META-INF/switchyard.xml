@@ -6,6 +6,9 @@
       <sca:service name="NotificationBroker">
         <sca:interface.java interface="com.prokarma.middleware.eeb.NotificationBroker"/>
       </sca:service>
+      <sca:reference name="Notifier">
+        <sca:interface.java interface="com.prokarma.middleware.eeb.Notifier"/>
+      </sca:reference>
     </sca:component>
     <sca:service name="NotificationBrokerService" promote="NotificationBrokerBean/NotificationBroker">
       <sca:interface.wsdl interface="NotificationBroker.wsdl#wsdl.porttype(NotificationBrokerPortType)"/>
@@ -13,6 +16,11 @@
         <soap:wsdl>NotificationBroker.wsdl</soap:wsdl>
       </soap:binding.soap>
     </sca:service>
+    <sca:component name="NotifierBean">
+      <bean:implementation.bean class="com.prokarma.middleware.eeb.NotifierBean"/>
+      <sca:service name="Notifier">
+        <sca:interface.java interface="com.prokarma.middleware.eeb.Notifier"/>
+      </sca:service>
+    </sca:component>
   </sca:composite>
-
 </sy:switchyard>
