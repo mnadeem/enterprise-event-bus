@@ -10,4 +10,9 @@ public class JPAMessageSubscriptionStore implements MessageSubscriptionStore {
 
 	}
 
+	@Override
+	public void update(MessageSubscription messageSubscription) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -6,4 +6,6 @@ public interface MessageSubscriptionStore {
 
 	void store(List<MessageSubscription> newMessageSubscriptions);
 
+	void update(MessageSubscription messageSubscription);
+
 }
