@@ -10,7 +10,7 @@ import org.switchyard.component.bean.Reference;
 
 @Named
 public class DefaultNotificationProcessor implements NotificationProcessor {
-	
+
 	@Inject
 	private MessageStore messageStore;
 	@Inject

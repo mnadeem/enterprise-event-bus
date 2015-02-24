@@ -1,5 +1,6 @@
 package com.prokarma.middleware.eeb;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -29,8 +30,7 @@ public class DefaultNotificationPublisher implements NotificationPublisher {
 	}
 
 	private List<MessageSubscription> messageSubscriptions(String topic) {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.emptyList();
 	}
 
 }
