@@ -8,7 +8,6 @@ import org.switchyard.validate.ValidationResult;
 
 @Named("Validators")
 public class Validators {
-	
 
     @Validator
     public ValidationResult validate(Notification notification) {
