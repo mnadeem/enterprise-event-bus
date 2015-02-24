@@ -11,7 +11,7 @@ import org.switchyard.ExchangeState;
 import org.switchyard.HandlerException;
 
 @Named
-public class OrderInterceptor implements ExchangeInterceptor {
+public class ServiceInterceptor implements ExchangeInterceptor {
 
     @Override
     public void before(String target, Exchange exchange) throws HandlerException {
