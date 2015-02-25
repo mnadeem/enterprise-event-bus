@@ -6,11 +6,14 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.apache.log4j.Logger;
 import org.switchyard.component.bean.Reference;
 
 @Named
 public class DefaultNotificationProcessor implements NotificationProcessor {
-
+	
+	private static final Logger LOGGER = Logger.getLogger(DefaultNotificationProcessor.class);
+	
 	@Inject
 	private MessageStore messageStore;
 	@Inject
@@ -25,7 +28,7 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 
 	@Override
 	public void process(Notification notification) {
-		System.out.println("DefaultNotificationProcessor" + notification);
+		LOGGER.debug("DefaultNotificationProcessor" + notification);
 		String id = this.messageStore.store(newMessage(notification));
 		this.validator.validate(notification);
 		List<Subscription> subscriptions =  this.subscriptionStore.getSubscriptions(notification.getTopic());

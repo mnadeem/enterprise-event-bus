@@ -13,7 +13,7 @@ import org.switchyard.bus.camel.processors.Processors;
 @Named("simple auditor")
 public class SimpleAuditor implements Auditor {
 
-    private Logger _logger = Logger.getLogger(SimpleAuditor.class);
+	private static final Logger LOGGER = Logger.getLogger(SimpleAuditor.class);
 
     @Override
     public void beforeCall(Processors processor, Exchange exchange) {
@@ -23,8 +23,7 @@ public class SimpleAuditor implements Auditor {
     @Override
     public void afterCall(Processors processor, Exchange exchange) {
         long time = System.currentTimeMillis() - exchange.getProperty("time", 0, Long.class);
-        _logger.info("Step " + processor.name() + " took " + time + "ms");
-        System.out.println("Step " + processor.name() + " took " + time + "ms");
+        LOGGER.debug("Step " + processor.name() + " took " + time + "ms");
     }
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.inject.Named;
 
+import org.apache.log4j.Logger;
 import org.switchyard.Exchange;
 import org.switchyard.ExchangeInterceptor;
 import org.switchyard.ExchangeState;
@@ -12,11 +13,13 @@ import org.switchyard.HandlerException;
 
 @Named
 public class ServiceInterceptor implements ExchangeInterceptor {
-
+	
+	private static final Logger LOGGER = Logger.getLogger(ServiceInterceptor.class);
+	
     @Override
     public void before(String target, Exchange exchange) throws HandlerException {
     	if (exchange.getProvider().getName().getLocalPart().equals("NotificationBrokerService")) {
-           System.out.println("Exchange started for NotificationBrokerService");
+    		LOGGER.debug("Exchange started for NotificationBrokerService");
         }
     }
 
@@ -25,9 +28,9 @@ public class ServiceInterceptor implements ExchangeInterceptor {
         // We only want to intercept successful replies from OrderService
         if (exchange.getProvider().getName().getLocalPart().equals("NotificationBrokerService")) {
            if (ExchangeState.OK.equals(exchange.getState())) {
-			System.out.println("Good Exchange for NotificationBrokerService");
+        	   LOGGER.debug("Good Exchange for NotificationBrokerService");
            } else {
-        	   System.out.println("Faulty Exchange for NotificationBrokerService");
+        	   LOGGER.debug("Faulty Exchange for NotificationBrokerService");
            }
         }
     }
