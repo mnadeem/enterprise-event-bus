@@ -1,4 +1,4 @@
-package com.prokarma.middleware.eeb;
+package com.prokarma.middleware.eeb.store;
 
 import java.util.List;
 

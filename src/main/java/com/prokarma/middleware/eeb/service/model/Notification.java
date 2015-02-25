@@ -1,4 +1,4 @@
-package com.prokarma.middleware.eeb;
+package com.prokarma.middleware.eeb.service.model;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

@@ -1,4 +1,4 @@
-package com.prokarma.middleware.eeb;
+package com.prokarma.middleware.eeb.service.support;
 
 import java.util.Arrays;
 import java.util.List;

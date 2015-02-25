@@ -1,4 +1,4 @@
-package com.prokarma.middleware.eeb;
+package com.prokarma.middleware.eeb.store;
 
 public class MessageSubscription {
 

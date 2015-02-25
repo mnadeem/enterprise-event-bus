@@ -1,10 +1,13 @@
-package com.prokarma.middleware.eeb;
+package com.prokarma.middleware.eeb.business;
 
 import java.util.Collections;
 import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import com.prokarma.middleware.eeb.store.MessageSubscription;
+import com.prokarma.middleware.eeb.store.MessageSubscriptionStore;
 
 @Named
 public class DefaultNotificationPublisher implements NotificationPublisher {

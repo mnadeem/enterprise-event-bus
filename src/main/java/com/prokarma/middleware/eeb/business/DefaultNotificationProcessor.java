@@ -1,4 +1,4 @@
-package com.prokarma.middleware.eeb;
+package com.prokarma.middleware.eeb.business;
 
 import java.util.Collections;
 import java.util.List;
@@ -8,6 +8,15 @@ import javax.inject.Named;
 
 import org.apache.log4j.Logger;
 import org.switchyard.component.bean.Reference;
+
+import com.prokarma.middleware.eeb.service.Notifier;
+import com.prokarma.middleware.eeb.service.model.Notification;
+import com.prokarma.middleware.eeb.store.Message;
+import com.prokarma.middleware.eeb.store.MessageStore;
+import com.prokarma.middleware.eeb.store.MessageSubscription;
+import com.prokarma.middleware.eeb.store.MessageSubscriptionStore;
+import com.prokarma.middleware.eeb.store.Subscription;
+import com.prokarma.middleware.eeb.store.SubscriptionStore;
 
 @Named
 public class DefaultNotificationProcessor implements NotificationProcessor {

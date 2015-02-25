@@ -1,8 +1,10 @@
-package com.prokarma.middleware.eeb;
+package com.prokarma.middleware.eeb.service.support;
 
 import org.switchyard.annotations.Transformer;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+
+import com.prokarma.middleware.eeb.service.model.Notification;
 
 public final class Transformers {
 
