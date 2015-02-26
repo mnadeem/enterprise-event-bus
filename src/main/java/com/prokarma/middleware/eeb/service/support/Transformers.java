@@ -10,7 +10,6 @@ public final class Transformers {
 
 	@Transformer(from = "{urn:com.prokarma.app.middleware:enterprise-event-bus:1.0}notify")
 	public Notification transformNotifyToNotification(Element from) {
-		System.out.println("Trnsforming : " + from);
 		 return new Notification()
          .setMessage(getElementValue(from, "message"))
          .setTopic(getElementValue(from, "topic"))

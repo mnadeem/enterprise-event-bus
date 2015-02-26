@@ -13,7 +13,6 @@ public class Validators {
 
     @Validator
     public ValidationResult validate(Notification notification) {
-    	System.out.println("Validating notification** " +  notification);
         if (notification.getPublisher().equalsIgnoreCase("BAD_PUBLISHER")) {
             return BaseValidator.invalidResult("Bad Publisher");
         }
