@@ -35,7 +35,7 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 
 	@Override
 	public void process(Notification notification) {
-		
+
 		String id = this.messageStore.store(newMessage(notification));
 		this.validator.validate(notification);
 		List<Subscription> subscriptions =  this.subscriptionStore.getSubscriptions(notification.getTopic());
@@ -47,9 +47,9 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 	private void processSubscritions(Notification notification) {
 		for (MessageSubscription messageSubscription : messageSubscriptions(notification.getTopic())) {
 			try {
-				notifySubscriber(notification.getTopic(), messageSubscription);
+				notifySubscriber(messageSubscription);
 			} catch (Exception e) {
-				// TODO Auto-generated catch block
+
 			}
 		}
 	}
@@ -62,13 +62,15 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 		return new Message();
 	}
 
-	private void notifySubscriber(String topic, MessageSubscription messageSubscription) {
+	private void notifySubscriber(MessageSubscription messageSubscription) {
 		this.notifier.notify(messageSubscription);
 	}
 
 	private List<MessageSubscription> messageSubscriptions(String topic) {
 		List<MessageSubscription> subscriptions = new ArrayList<MessageSubscription>();
-		subscriptions.add(new MessageSubscription("Hello Event", "file://output1/,file://output2/"));
+		subscriptions.add(new MessageSubscription("1", "Hello Event1", "file://output/"));
+		subscriptions.add(new MessageSubscription("2","Hello Event2", "file://output/"));
+		subscriptions.add(new MessageSubscription("3","Hello Event3", "file://output/"));
 		return subscriptions;
 	}
 }

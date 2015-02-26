@@ -11,7 +11,6 @@ public class NotifierRoute extends RouteBuilder {
 	public void configure() throws Exception {
 
 		from("switchyard://Notifier")
-		.log("Received message for 'NotifierRoute' : ${body}")
 		.process(new Processor() {
 			@Override
 			public void process(Exchange exchange) throws Exception {

@@ -2,6 +2,7 @@ package com.prokarma.middleware.eeb.store;
 
 public class MessageSubscription {
 	
+	private String id;
 	private String message;
 	private String recipients;
 	
@@ -10,7 +11,8 @@ public class MessageSubscription {
 
 	}
 
-	public MessageSubscription(String message, String recipients) {
+	public MessageSubscription(String id, String message, String recipients) {
+		this.id = id;
 		this.message = message;
 		this.recipients = recipients;
 	}
@@ -28,7 +30,11 @@ public class MessageSubscription {
 	}
 
 	public String getId() {
-		return "1";
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 }
