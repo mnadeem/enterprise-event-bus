@@ -68,9 +68,9 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 
 	private List<MessageSubscription> messageSubscriptions(String topic) {
 		List<MessageSubscription> subscriptions = new ArrayList<MessageSubscription>();
-		subscriptions.add(new MessageSubscription("1", "Hello Event1", "file://output/"));
-		subscriptions.add(new MessageSubscription("2","Hello Event2", "file://output/"));
-		subscriptions.add(new MessageSubscription("3","Hello Event3", "file://output/"));
+		subscriptions.add(new MessageSubscription("1", "Hello Event1", "http://localhost:8080/http-example/"));
+		subscriptions.add(new MessageSubscription("2","Hello Event2", "http://localhost:8080/http-example/"));
+		subscriptions.add(new MessageSubscription("3","Hello Event3", "file:///output/"));
 		return subscriptions;
 	}
 }
