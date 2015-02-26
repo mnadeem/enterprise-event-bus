@@ -8,6 +8,6 @@ public interface MessageSubscriptionStore {
 
 	void update(MessageSubscription messageSubscription);
 
-	MessageSubscription get(String id);
+	MessageSubscription load(String id);
 
 }

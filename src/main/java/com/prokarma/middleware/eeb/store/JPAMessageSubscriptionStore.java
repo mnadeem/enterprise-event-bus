@@ -17,8 +17,7 @@ public class JPAMessageSubscriptionStore implements MessageSubscriptionStore {
 	}
 
 	@Override
-	public MessageSubscription get(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public MessageSubscription load(String id) {
+		return new MessageSubscription();
 	}
 }

@@ -7,7 +7,6 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import org.apache.log4j.Logger;
 import org.switchyard.component.bean.Reference;
 
 import com.prokarma.middleware.eeb.service.Notifier;
@@ -19,10 +18,8 @@ import com.prokarma.middleware.eeb.store.MessageSubscriptionStore;
 import com.prokarma.middleware.eeb.store.Subscription;
 import com.prokarma.middleware.eeb.store.SubscriptionStore;
 
-@Named
+@Named("notificationProcessor")
 public class DefaultNotificationProcessor implements NotificationProcessor {
-
-	private static final Logger LOGGER = Logger.getLogger(DefaultNotificationProcessor.class);
 
 	@Inject
 	private MessageStore messageStore;
@@ -38,7 +35,7 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 
 	@Override
 	public void process(Notification notification) {
-		LOGGER.debug("DefaultNotificationProcessor" + notification);
+		
 		String id = this.messageStore.store(newMessage(notification));
 		this.validator.validate(notification);
 		List<Subscription> subscriptions =  this.subscriptionStore.getSubscriptions(notification.getTopic());
