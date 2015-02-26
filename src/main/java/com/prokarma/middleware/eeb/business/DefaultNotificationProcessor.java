@@ -1,5 +1,6 @@
 package com.prokarma.middleware.eeb.business;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,9 +21,9 @@ import com.prokarma.middleware.eeb.store.SubscriptionStore;
 
 @Named
 public class DefaultNotificationProcessor implements NotificationProcessor {
-	
+
 	private static final Logger LOGGER = Logger.getLogger(DefaultNotificationProcessor.class);
-	
+
 	@Inject
 	private MessageStore messageStore;
 	@Inject
@@ -42,7 +43,18 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 		this.validator.validate(notification);
 		List<Subscription> subscriptions =  this.subscriptionStore.getSubscriptions(notification.getTopic());
 		this.messsageSubscriptionStore.store(newMessageSubscriptions(notification, subscriptions, id));
-		this.notifier.notify(notification.getTopic());
+
+		processSubscritions(notification);
+	}
+
+	private void processSubscritions(Notification notification) {
+		for (MessageSubscription messageSubscription : messageSubscriptions(notification.getTopic())) {
+			try {
+				notifySubscriber(notification.getTopic(), messageSubscription);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+			}
+		}
 	}
 
 	private List<MessageSubscription> newMessageSubscriptions(Notification notification, List<Subscription> subscriptions, String id) {
@@ -51,5 +63,15 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 
 	private Message newMessage(Notification notification) {
 		return new Message();
+	}
+
+	private void notifySubscriber(String topic, MessageSubscription messageSubscription) {
+		this.notifier.notify(messageSubscription);
+	}
+
+	private List<MessageSubscription> messageSubscriptions(String topic) {
+		List<MessageSubscription> subscriptions = new ArrayList<MessageSubscription>();
+		subscriptions.add(new MessageSubscription("Hello Event", "file://output1/,file://output2/"));
+		return subscriptions;
 	}
 }

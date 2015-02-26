@@ -15,4 +15,10 @@ public class JPAMessageSubscriptionStore implements MessageSubscriptionStore {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public MessageSubscription get(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
