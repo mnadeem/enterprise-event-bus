@@ -36,7 +36,7 @@ public class InMemMessageSubscriptionStore implements MessageSubscriptionStore {
 	public List<MessageSubscription> find(String topic) {
 		List<MessageSubscription> messageSubscriptions = new ArrayList<MessageSubscription>();
 		for (MessageSubscription messageSubscription : store.values()) {
-			if (messageSubscription.getTopic().equalsIgnoreCase(topic)) {
+			if (messageSubscription.getTopic().equalsIgnoreCase(topic) && !messageSubscription.isProcessed()) {
 				messageSubscriptions.add(messageSubscription);
 			}
 		}

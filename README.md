@@ -21,3 +21,12 @@ Camel http module is not configured by default in jboss-eap, follow the steps to
 		</extensions>
 	</subsystem>
 ```
+* By Default in-momory implemention (Howerver providing datastore implementation would be a trivial task) is provided and hence it identifies the following topic and endpoints, as things are hard coded.
+
+```java
+static {
+		store.put("1", new Subscription("1", "xyz", "http://localhost:8080/http-example/"));
+		store.put("2", new Subscription("2", "xyz", "http://localhost:8080/http-example/"));
+		store.put("1", new Subscription("1", "xyz", "file:///output/"));
+	}
+```
