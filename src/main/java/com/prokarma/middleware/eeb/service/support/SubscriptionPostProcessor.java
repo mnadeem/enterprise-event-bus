@@ -16,7 +16,6 @@ public class SubscriptionPostProcessor {
 
 	public void updateSubscription(@Header("subscriptionId") String subscriptionId) {
 		MessageSubscription messageSubscription = messsageSubscriptionStore.load(subscriptionId);
-		System.out.println("MessageSubscription " + messageSubscription);
 		messageSubscription.setProcessed(true);
 		this.messsageSubscriptionStore.update(messageSubscription);
 	}
