@@ -7,13 +7,18 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.prokarma.middleware.eeb.store.support.Util;
 
 public class InMemMessageSubscriptionStore implements MessageSubscriptionStore {
-	
+
 	private static ConcurrentHashMap<String, MessageSubscription> store = new ConcurrentHashMap<String, MessageSubscription>();
 
 	@Override
-	public void store(List<MessageSubscription> newMessageSubscriptions) {
-		for (MessageSubscription messageSubscription : newMessageSubscriptions) {
-			store.put(Util.generateId(), messageSubscription);
+	public void store(List<MessageSubscription> messageSubscriptions) {
+		if (messageSubscriptions == null || messageSubscriptions.isEmpty()) {
+			System.err.println("*** No subscription");
+			return ;
+		}
+		for (MessageSubscription messageSubscription : messageSubscriptions) {
+			messageSubscription.setId(Util.generateId());
+			store.put(messageSubscription.getId(), messageSubscription);
 		}
 	}
 

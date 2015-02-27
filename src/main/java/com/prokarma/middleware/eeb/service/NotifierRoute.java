@@ -18,10 +18,8 @@ public class NotifierRoute extends RouteBuilder {
 				exchange.getOut().setBody(messageSubscription.getMessage());
 				exchange.getOut().setHeader("recipients", messageSubscription.getRecipients());
 				exchange.getOut().setHeader("subscriptionId", messageSubscription.getId());
-				System.out.println("recipients " + messageSubscription.getRecipients());
-				System.out.println("recipients " + messageSubscription.getMessage());
 			}
-		}).recipientList(header("recipients"))
+		}).recipientList(header("recipients"))		
 		.to("bean:subscriptionPostProcessor");
 	}
 }

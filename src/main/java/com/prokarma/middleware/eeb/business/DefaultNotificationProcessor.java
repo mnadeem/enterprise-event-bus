@@ -34,9 +34,7 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 
 	@Override
 	public void process(Notification notification) {
-		System.out.println("Received Notification "+ notification);
 		String messageId = this.messageStore.store(newMessage(notification));
-		System.out.println("messageId" + messageId);
 		this.validator.validate(notification);
 		List<Subscription> subscriptions =  this.subscriptionStore.getSubscriptions(notification.getTopic());
 		this.messsageSubscriptionStore.store(newMessageSubscriptions(notification, subscriptions, messageId));
