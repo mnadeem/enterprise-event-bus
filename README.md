@@ -1,5 +1,5 @@
 # enterprise-event-bus
-Enterprise Event Bus using Fuse Service Works
+Enterprise Event Bus (Event-Driven SOA, publisher-subscriber or simple EEB) using Fuse Service Works
 
 # Why Jboss Fuse Service Works
 * Exposing Any end point (SOAP, REST, JMS AMQP etc) is just a matter of few clicks
@@ -21,7 +21,7 @@ Camel http module is not configured by default in jboss-eap, follow the steps to
 		</extensions>
 	</subsystem>
 ```
-* By Default in-momory implemention (Howerver providing datastore implementation would be a trivial task) is provided and hence it identifies the following topic and endpoints, as things are hard coded.
+* By Default in-momory implemention (Howerver providing datastore implementation would be a trivial task) is provided and hence it identifies the following topic and endpoints, as things are hard coded. And hence you have to post to those topics and the following end point should be up to receive the notification
 
 ```java
 static {
