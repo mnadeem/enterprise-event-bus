@@ -1,6 +1,9 @@
 # Enterprise Event Bus (EEB)
 Enterprise Event Bus (Event-Driven SOA, publisher-subscriber or simply EEB) using Fuse Service Works. By default SOAP over http binding is available, However exposing other bindings (REST, JMS, AMQP etc) is just a matter of few clicks in Fuse Service works.
-![eebImageId]
+##### Level 1
+![eeb1ImageId]
+##### Level 2
+![eeb2ImageId]
 ### Here is the Switchyard diagram for publishing feature
 ![switchyardImageId]
 
@@ -51,6 +54,8 @@ just run
 mvn clean install
 ```
 
-[eebImageId]: http://s17.postimg.org/a8x02npsv/eeb.png  "EEB Diagram"
+
+[eeb1ImageId]: http://s15.postimg.org/n4tdptvi3/eeb_level1.png  "EEB Level 1 Diagram"
+[eeb2ImageId]: http://s17.postimg.org/a8x02npsv/eeb.png  "EEB Level 2 Diagram"
 [switchyardImageId]: http://s9.postimg.org/o8gmo9b5b/switchyard.png  "Switchyard Component Diagram"
 
