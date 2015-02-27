@@ -1,6 +1,14 @@
 # enterprise-event-bus
 Enterprise Event Bus (Event-Driven SOA, publisher-subscriber or simple EEB) using Fuse Service Works
 
+# EEB Features
+* Store and Forward
+* Throttling
+* Translation
+* Filtering
+* Push and Pull
+
+
 # Why Jboss Fuse Service Works
 * Exposing Any end point (SOAP, REST, JMS AMQP etc) is just a matter of few clicks
 * Monitoring and Governance support
