@@ -10,4 +10,6 @@ public interface MessageSubscriptionStore {
 
 	MessageSubscription load(String id);
 
+	List<MessageSubscription> find(String topic);
+
 }
