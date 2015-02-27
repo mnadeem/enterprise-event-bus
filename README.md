@@ -19,8 +19,9 @@ Enterprise Event Bus (Event-Driven SOA, publisher-subscriber or simply EEB) usin
 * Can be deployed to OSGI as well as server
 * JEE support
 
-# Pre requisites
-Camel http module is not configured by default in jboss-eap, follow the steps to configure on
+# How to Run
+##### Configure Camel http in wildfly
+Camel http module is not configured by default in jboss-eap, follow the steps to configure one
 * copy module.xml to modules\system\layers\soa\org\apache\camel\http\main
 * copy camel-http-2.14.0.jar to modules\system\layers\soa\org\apache\camel\http\main
 * look for the following in your jboss server configuration and add the camel http extension 
@@ -32,7 +33,8 @@ Camel http module is not configured by default in jboss-eap, follow the steps to
 		</extensions>
 	</subsystem>
 ```
-* By Default in-momory implemention (Howerver providing datastore implementation[key-value for message store and rdbms for other confgiguration] would be a trivial task) is provided and hence it identifies the following topic and endpoints, as things are hard coded. And hence you have to post to those topics and the following end point should be up to receive the notification
+##### Setup endpoint
+* By Default in-memory implementation (providing datastore implementation[key-value for message store and rdbms for other configuration] would be a trivial task) is provided and hence it identifies the following topic and endpoints, as things are hard coded. And hence you have to post to those topic and the following end point should be up to receive the notification
 
 ```java
 static {
