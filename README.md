@@ -56,6 +56,6 @@ mvn clean install
 
 
 [eeb1ImageId]: http://s15.postimg.org/n4tdptvi3/eeb_level1.png  "EEB Level 1 Diagram"
-[eeb2ImageId]: http://s17.postimg.org/a8x02npsv/eeb.png  "EEB Level 2 Diagram"
+[eeb2ImageId]: http://s24.postimg.org/tkl5wn11x/eeb_level2.png  "EEB Level 2 Diagram"
 [switchyardImageId]: http://s9.postimg.org/o8gmo9b5b/switchyard.png  "Switchyard Component Diagram"
 
