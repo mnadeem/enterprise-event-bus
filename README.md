@@ -1,5 +1,5 @@
 # Enterprise Event Bus (EEB)
-Enterprise Event Bus (Event-Driven SOA, publisher-subscriber or simple EEB) using Fuse Service Works
+Enterprise Event Bus (Event-Driven SOA, publisher-subscriber or simple EEB) using Fuse Service Works, By default SOAP over http binding is available, However exposing other bindings (REST, JMS, AMQP etc) is just a matter of few clicks in Fuse Service works
 
 # EEB Features
 * Store and Forward
