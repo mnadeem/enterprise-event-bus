@@ -32,7 +32,7 @@ Camel http module is not configured by default in jboss-eap, follow the steps to
 		</extensions>
 	</subsystem>
 ```
-* By Default in-momory implemention (Howerver providing datastore implementation would be a trivial task) is provided and hence it identifies the following topic and endpoints, as things are hard coded. And hence you have to post to those topics and the following end point should be up to receive the notification
+* By Default in-momory implemention (Howerver providing datastore implementation[key-value for message store and rdbms for other confgiguration] would be a trivial task) is provided and hence it identifies the following topic and endpoints, as things are hard coded. And hence you have to post to those topics and the following end point should be up to receive the notification
 
 ```java
 static {
