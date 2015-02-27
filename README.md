@@ -1,4 +1,4 @@
-# enterprise-event-bus
+# Enterprise Event Bus (EEB)
 Enterprise Event Bus (Event-Driven SOA, publisher-subscriber or simple EEB) using Fuse Service Works
 
 # EEB Features
