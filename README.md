@@ -43,6 +43,13 @@ static {
 		store.put("1", new Subscription("1", "xyz", "file:///output/"));
 	}
 ```
+##### Start Wildfly Server
+
+##### Deploy the application to server
+just run 
+```bash
+mvn clean install
+```
 
 [eebImageId]: http://s17.postimg.org/a8x02npsv/eeb.png  "EEB Diagram"
 [switchyardImageId]: http://s9.postimg.org/o8gmo9b5b/switchyard.png  "Switchyard Component Diagram"
