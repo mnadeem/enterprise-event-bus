@@ -23,8 +23,8 @@ public class InMemMessageSubscriptionStore implements MessageSubscriptionStore {
 	}
 
 	@Override
-	public void update(MessageSubscription messageSubscription) {
-		store.put(messageSubscription.getId(), messageSubscription);		
+	public void update(MessageSubscription messageSubscription) {		
+		store.put(messageSubscription.getId(), messageSubscription);
 	}
 
 	@Override

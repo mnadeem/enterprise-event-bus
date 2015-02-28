@@ -6,6 +6,10 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.switchyard.component.bean.Reference;
 
 import com.prokarma.middleware.eeb.service.Notifier;
@@ -19,7 +23,9 @@ import com.prokarma.middleware.eeb.store.SubscriptionStore;
 
 @Named("notificationProcessor")
 public class DefaultNotificationProcessor implements NotificationProcessor {
-
+	
+	private static Logger logger = LoggerFactory.getLogger(DefaultNotificationProcessor.class);
+	
 	@Inject
 	private MessageStore messageStore;
 	@Inject
@@ -47,7 +53,7 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 			try {
 				notifySubscriber(messageSubscription);
 			} catch (Exception e) {
-				e.printStackTrace();
+				logger.error("Error Notifying", e);
 			}
 		}
 	}
@@ -61,7 +67,7 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 	}
 
 	private Message newMessage(Notification notification) {
-		return new Message();
+		return new Message(notification.getPublisher(), notification.getTopic(), notification.getMessage());
 	}
 
 	private void notifySubscriber(MessageSubscription messageSubscription) {

@@ -1,9 +1,20 @@
 package com.prokarma.middleware.eeb.store;
 
+import java.util.Date;
+
 public class Message {
 
 	private String id;
 	private String message;
+	private String topic;
+	private String createdBy;
+	private Date creationDateTime;
+
+	public Message(String publisher, String topic, String message) {
+		this.createdBy = publisher;
+		this.topic = topic;
+		this.message = message;
+	}
 
 	public String getId() {
 		return id;
@@ -21,36 +32,34 @@ public class Message {
 		this.message = message;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((message == null) ? 0 : message.hashCode());
-		return result;
+	public String getTopic() {
+		return topic;
+	}
+
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public Date getCreationDateTime() {
+		return creationDateTime;
+	}
+
+	public void setCreationDateTime(Date creationDateTime) {
+		this.creationDateTime = creationDateTime;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Message other = (Message) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (message == null) {
-			if (other.message != null)
-				return false;
-		} else if (!message.equals(other.message))
-			return false;
-		return true;
+	public String toString() {
+		return String.format("Message [id=%s, message=%s, topic=%s]", id,
+				message, topic);
 	}
-
 
 }
