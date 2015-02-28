@@ -30,9 +30,11 @@ public class Notification {
 		this.publisher = publisher;
 		return this;
 	}
+
 	@Override
 	public String toString() {
-		return "Notification [topic=" + topic + ", message=" + message
-				+ ", publisher=" + publisher + "]";
-	}
+		return String.format(
+				"Notification [topic=%s, message=%s, publisher=%s]", topic,
+				message, publisher);
+	}	
 }

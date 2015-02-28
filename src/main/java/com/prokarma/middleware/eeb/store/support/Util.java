@@ -2,7 +2,7 @@ package com.prokarma.middleware.eeb.store.support;
 
 import java.util.UUID;
 
-public class Util {
+public final class Util {
 
 	private Util() {
 

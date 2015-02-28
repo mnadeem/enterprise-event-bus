@@ -10,7 +10,6 @@ public class DefaultNotificationValidator implements NotificationValidator {
 	@Override
 	public void validate(Notification notification) {
 		// TODO Auto-generated method stub
-
 	}
 
 }
