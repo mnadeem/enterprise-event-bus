@@ -39,7 +39,7 @@
   </wsdl:binding>
   <wsdl:service name="NotificationBroker">
     <wsdl:port name="NotificationBrokerPort" binding="tns:NotificationBrokerSoapBinding">
-      <soap:address location="http://localhost:8080/enterprise-event-bus/NotificationBroker"/>
+      <soap:address location="http://localhost:8080/eeb/NotificationBroker"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

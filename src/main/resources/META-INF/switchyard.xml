@@ -14,6 +14,8 @@
       <sca:interface.wsdl interface="NotificationBroker.wsdl#wsdl.porttype(NotificationBrokerPortType)"/>
       <soap:binding.soap name="soap1">
         <soap:wsdl>NotificationBroker.wsdl</soap:wsdl>
+        <soap:socketAddr>:${jettyPort}</soap:socketAddr>
+        <soap:contextPath>eeb</soap:contextPath>
       </soap:binding.soap>
     </sca:service>
     <sca:component name="NotifierBean">
@@ -28,4 +30,9 @@
   <sy:validates>
     <validate:validate.java name="java:com.prokarma.middleware.eeb.service.model.Notification" bean="Validators"/>
   </sy:validates>
+  <sy:domain>
+    <sy:properties>
+      <sy:property name="jettyPort" value="${org.switchyard.component.http.standalone.port:8080}"/>
+    </sy:properties>
+  </sy:domain>
 </sy:switchyard>
