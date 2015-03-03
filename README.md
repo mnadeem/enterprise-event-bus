@@ -46,7 +46,7 @@ static {
 		store.put("1", new Subscription("1", "xyz", "file:///output/"));
 	}
 ```
-Alternatively you can change the endpoint in __com.prokarma.middleware.eeb.store.InMemSubscriptionStore__
+Alternatively you can change the endpoint in _com.prokarma.middleware.eeb.store.InMemSubscriptionStore_
 ##### Start Wildfly Server
 
 ##### Deploy the application to server
@@ -54,9 +54,9 @@ just run
 ```bash
 mvn clean install -P deploy
 ```
-Run __com.prokarma.middleware.eeb.NotificationListener__ this would start the notification listener
+Run _com.prokarma.middleware.eeb.NotificationListener_ this would start the notification listener
 
-Run __com.prokarma.middleware.eeb.NotificationBrokerTest__ this would publish the event to EEB
+Run _com.prokarma.middleware.eeb.NotificationBrokerTest_ this would publish the event to EEB
 
 
 [eeb1ImageId]: http://s15.postimg.org/n4tdptvi3/eeb_level1.png  "EEB Level 1 Diagram"
