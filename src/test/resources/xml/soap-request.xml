@@ -1,0 +1,16 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com.prokarma.app.middleware:enterprise-event-bus:1.0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:notify>
+         <!--Optional:-->
+         <notification>
+            <!--Optional:-->
+            <message>NEW message</message>
+            <!--Optional:-->
+            <publisher>nadeem</publisher>
+            <!--Optional:-->
+            <topic>xyz</topic>
+         </notification>
+      </urn:notify>
+   </soapenv:Body>
+</soapenv:Envelope>
