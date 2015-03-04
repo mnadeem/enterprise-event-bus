@@ -6,6 +6,7 @@ Enterprise Event Bus (Event-Driven SOA, publisher-subscriber or simply EEB) usin
 ![eeb2ImageId]
 ### Here is the Switchyard diagram for publishing feature
 ![switchyardImageId]
+
 Here is the ER diagram to start with
 ![erId]
 # EEB Features
