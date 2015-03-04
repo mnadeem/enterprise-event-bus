@@ -6,7 +6,8 @@ Enterprise Event Bus (Event-Driven SOA, publisher-subscriber or simply EEB) usin
 ![eeb2ImageId]
 ### Here is the Switchyard diagram for publishing feature
 ![switchyardImageId]
-
+Here is the ER diagram to start with
+![erId]
 # EEB Features
 * Store and Forward
 * Throttling
@@ -62,4 +63,5 @@ Run _com.prokarma.middleware.eeb.NotificationBrokerTest_ this would publish the 
 [eeb1ImageId]: http://s15.postimg.org/n4tdptvi3/eeb_level1.png  "EEB Level 1 Diagram"
 [eeb2ImageId]: http://s24.postimg.org/tkl5wn11x/eeb_level2.png  "EEB Level 2 Diagram"
 [switchyardImageId]: http://s9.postimg.org/o8gmo9b5b/switchyard.png  "Switchyard Component Diagram"
+[erId]: http://s22.postimg.org/gwtdfhqkh/eeb_er.png  "Enterprise Event Bus Entity Relation"
 
