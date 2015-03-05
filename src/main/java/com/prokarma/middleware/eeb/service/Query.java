@@ -2,6 +2,8 @@ package com.prokarma.middleware.eeb.service;
 
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+@XmlRootElement(name="query")
 public class Query {
 
 	private String topic;
