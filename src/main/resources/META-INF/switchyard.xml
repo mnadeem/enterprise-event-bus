@@ -10,14 +10,6 @@
         <sca:interface.java interface="com.prokarma.middleware.eeb.service.Notifier"/>
       </sca:reference>
     </sca:component>
-    <sca:service name="NotificationBrokerService" promote="NotificationBrokerBean/NotificationBroker">
-      <sca:interface.wsdl interface="NotificationBroker.wsdl#wsdl.porttype(NotificationBrokerPortType)"/>
-      <soap:binding.soap name="soap1">
-        <soap:wsdl>NotificationBroker.wsdl</soap:wsdl>
-        <soap:socketAddr>:${jettyPort}</soap:socketAddr>
-        <soap:contextPath>eeb</soap:contextPath>
-      </soap:binding.soap>
-    </sca:service>
     <sca:component name="NotifierBean">
       <camel:implementation.camel>
         <camel:java class="com.prokarma.middleware.eeb.service.NotifierRoute"/>
@@ -26,6 +18,14 @@
         <sca:interface.java interface="com.prokarma.middleware.eeb.service.Notifier"/>
       </sca:service>
     </sca:component>
+    <sca:service name="NotificationBrokerPortType" promote="NotificationBrokerBean/NotificationBroker">
+      <sca:interface.wsdl interface="NotificationBroker.wsdl#wsdl.porttype(NotificationBrokerPortType)"/>
+      <soap:binding.soap name="soap1">
+        <soap:wsdl>NotificationBroker.wsdl</soap:wsdl>
+        <soap:socketAddr>:${jettyPort}</soap:socketAddr>
+        <soap:contextPath>eeb</soap:contextPath>
+      </soap:binding.soap>
+    </sca:service>
   </sca:composite>
   <sy:validates>
     <validate:validate.java name="java:com.prokarma.middleware.eeb.service.model.Notification" bean="Validators"/>

@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.switchyard.component.bean.Reference;
 
 import com.prokarma.middleware.eeb.service.Notifier;
+import com.prokarma.middleware.eeb.service.Query;
 import com.prokarma.middleware.eeb.service.model.Notification;
 import com.prokarma.middleware.eeb.store.Message;
 import com.prokarma.middleware.eeb.store.MessageStore;
@@ -42,15 +43,15 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 		this.validator.validate(notification);
 		List<Subscription> subscriptions = this.subscriptionStore.getSubscriptions(notification.getTopic());
 		if (!subscriptions.isEmpty()) {
-			this.messsageSubscriptionStore.store(newMessageSubscriptions(notification, subscriptions, messageId));
-			processSubscritions(notification);
+			this.messsageSubscriptionStore.store(newMessageSubscriptions(notification.getMessage(), subscriptions, messageId));
+			processSubscritions(notification.getTopic());
 		} else {
 			logger.info("No subscriptions for topic {}", notification.getTopic());
 		}
 	}
 
-	private void processSubscritions(Notification notification) {
-		for (MessageSubscription messageSubscription : messageSubscriptions(notification.getTopic())) {
+	private void processSubscritions(String topic) {
+		for (MessageSubscription messageSubscription : messageSubscriptions(topic)) {
 			try {
 				notifySubscriber(messageSubscription);
 			} catch (Exception e) {
@@ -59,11 +60,11 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 		}
 	}
 
-	private List<MessageSubscription> newMessageSubscriptions(Notification notification, List<Subscription> subscriptions, String messageId) {
+	private List<MessageSubscription> newMessageSubscriptions(String message, List<Subscription> subscriptions, String messageId) {
 		List<MessageSubscription> messageSubscriptions = new ArrayList<MessageSubscription>();
 		for (Subscription subscription : subscriptions) {
 			messageSubscriptions.add(new MessageSubscription(messageId,
-					notification.getTopic(), notification.getMessage(),
+					subscription.getTopic(), message,
 					subscription.getEndpoint()));
 		}
 		return messageSubscriptions;
@@ -80,5 +81,20 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 
 	private List<MessageSubscription> messageSubscriptions(String topic) {
 		return this.messsageSubscriptionStore.find(topic);
+	}
+
+	@Override
+	public void handleQuery(Query query) {
+		List<String> msgIds = this.messageStore.find(query.getTopic(), query.getFrom(), query.getTo());
+		for (String messageId : msgIds) {
+			List<Subscription> subscriptions = this.subscriptionStore.getSubscriptions(query.getTopic());
+			if (!subscriptions.isEmpty()) {
+				Message message = this.messageStore.get(messageId);
+				this.messsageSubscriptionStore.store(newMessageSubscriptions(message.getMessage(), subscriptions, messageId));
+				processSubscritions(query.getTopic());
+			} else {
+				logger.info("No subscriptions for topic {}", query.getTopic());
+			}
+		}
 	}
 }

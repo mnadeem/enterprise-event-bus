@@ -1,6 +1,7 @@
 package com.prokarma.middleware.eeb.store;
 
 import java.util.Date;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Named;
@@ -18,5 +19,17 @@ public class InMemMessageStore implements MessageStore {
 		message.setCreationDateTime(new Date());
 		this.store.put(message.getId(), message);
 		return message.getId();
+	}
+
+	@Override
+	public List<String> find(String topic, Date from, Date to) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Message get(String messageId) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

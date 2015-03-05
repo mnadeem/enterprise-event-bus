@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.switchyard.component.bean.Service;
 
 import com.prokarma.middleware.eeb.business.NotificationProcessor;
-import com.prokarma.middleware.eeb.common.NotificationException;
 import com.prokarma.middleware.eeb.service.model.Notification;
 
 @Service(NotificationBroker.class)
@@ -19,8 +18,14 @@ public class NotificationBrokerBean implements NotificationBroker {
 	private NotificationProcessor processor;
 
 	@Override
-	public void notify(Notification notification) throws NotificationException {
+	public void notify(Notification notification) {
 		LOGGER.info("Receive notificaton {} ", notification);
 		processor.process(notification);
+	}
+
+	@Override
+	public void forward(Query query) {
+		LOGGER.info("Receive query {} ", query);
+		processor.handleQuery(query);
 	}
 }
