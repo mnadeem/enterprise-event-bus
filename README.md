@@ -61,7 +61,7 @@ Run _com.prokarma.middleware.eeb.NotificationListener_ this would start the noti
 Run _com.prokarma.middleware.eeb.NotificationBrokerTest_ this would publish the event to EEB
 
 ### Note
-This is just for demo purpose, it is not ready for Enterpise, Since appropirate measures has to be taken care for clustering and scalibility. specially it is difficult(possible though) to implement throtteling with camel 2, things might be little different with camel 3
+This is just for demo purpose, it is not ready for Enterpise,  appropiate measures has to be taken for clustering and scalibility, specially it is difficult(possible though) to implement throtteling with camel 2 in clustered environment, things might be little different with camel 3
 
 
 [eeb1ImageId]: http://s15.postimg.org/n4tdptvi3/eeb_level1.png  "EEB Level 1 Diagram"
