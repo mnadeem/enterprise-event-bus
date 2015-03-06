@@ -8,7 +8,7 @@ public interface MessageStore {
 
 	String store(Message newMessage);
 
-	List<String> find(String topic, DateTime from, DateTime to);
+	List<Message> find(String topic, DateTime from, DateTime to);
 
 	Message get(String messageId);
 }

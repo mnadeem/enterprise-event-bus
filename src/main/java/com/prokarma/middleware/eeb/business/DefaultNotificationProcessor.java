@@ -55,14 +55,13 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 
 	@Override
 	public void handleQuery(Query query) {
-		List<String> msgIds = this.messageStore.find(query.getTopic(), query.getFrom(), query.getTo());
-		if (msgIds == null || msgIds.isEmpty()) {
+		List<Message> messages = this.messageStore.find(query.getTopic(), query.getFrom(), query.getTo());
+		if (messages == null || messages.isEmpty()) {
 			logger.info("No Messages to forward for topic {} for given date range ", query.getTopic());
 		}
 		String topic = query.getTopic();
-		for (String messageId : msgIds) {
-			Message message = this.messageStore.get(messageId);
-			doProcessMessage(topic, messageId, message.getMessage());
+		for (Message message : messages) {
+			doProcessMessage(topic, message.getId(), message.getMessage());
 		}
 	}
 

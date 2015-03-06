@@ -1,6 +1,6 @@
 package com.prokarma.middleware.eeb.store;
 
-import java.util.Date;
+import org.joda.time.DateTime;
 
 public class Message {
 
@@ -8,7 +8,7 @@ public class Message {
 	private String message;
 	private String topic;
 	private String createdBy;
-	private Date creationDateTime;
+	private DateTime creationDateTime;
 
 	public Message(String publisher, String topic, String message) {
 		this.createdBy = publisher;
@@ -48,11 +48,11 @@ public class Message {
 		this.createdBy = createdBy;
 	}
 
-	public Date getCreationDateTime() {
+	public DateTime getCreationDateTime() {
 		return creationDateTime;
 	}
 
-	public void setCreationDateTime(Date creationDateTime) {
+	public void setCreationDateTime(DateTime creationDateTime) {
 		this.creationDateTime = creationDateTime;
 	}
 
