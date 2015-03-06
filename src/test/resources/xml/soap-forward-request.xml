@@ -1,0 +1,14 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:urn="urn:com.prokarma.app.middleware:enterprise-event-bus:1.0">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <urn:forward>
+         <!--Optional:-->
+         <query>
+            <topic>xyz</topic>
+            <publisher>nadeem</publisher>
+            <from>2011-05-30T11:02:30.000-04:00</from>
+            <to>2011-05-30T11:02:30.000-04:00</to>
+         </query>
+      </urn:forward>
+   </soapenv:Body>
+</soapenv:Envelope>

@@ -5,7 +5,7 @@ import org.switchyard.component.test.mixins.http.HTTPMixIn;
 
 public class NotificationBrokerTest {
 
-	private static final String XML = "src/test/resources/xml/soap-request.xml";
+	private static final String XML = "src/test/resources/xml/soap-notification-request.xml";
 
 	public static void main(String[] args) {
 		postNotificationToEEB();

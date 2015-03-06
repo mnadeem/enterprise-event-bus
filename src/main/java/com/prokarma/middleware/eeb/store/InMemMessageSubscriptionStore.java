@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
+import javax.enterprise.inject.Default;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.prokarma.middleware.eeb.store.support.Util;
-
+@Default
 public class InMemMessageSubscriptionStore implements MessageSubscriptionStore {
 	private static Logger logger = LoggerFactory.getLogger(InMemMessageSubscriptionStore.class);
 

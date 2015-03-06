@@ -5,13 +5,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.inject.Named;
+import javax.enterprise.inject.Default;
 
 import org.joda.time.DateTime;
 
 import com.prokarma.middleware.eeb.store.support.Util;
 
-@Named
+@Default
 public class InMemMessageStore implements MessageStore {
 
 	private ConcurrentHashMap<String, Message> store = new ConcurrentHashMap<String, Message>();

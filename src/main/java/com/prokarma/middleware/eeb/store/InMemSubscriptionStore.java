@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
-import javax.inject.Named;
-@Named
+import javax.enterprise.inject.Default;
+@Default
 public class InMemSubscriptionStore implements SubscriptionStore {
 
 	private static ConcurrentHashMap<String, Subscription> store = new ConcurrentHashMap<String, Subscription>();

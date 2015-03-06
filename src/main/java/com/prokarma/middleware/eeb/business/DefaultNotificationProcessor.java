@@ -3,6 +3,7 @@ package com.prokarma.middleware.eeb.business;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -21,6 +22,7 @@ import com.prokarma.middleware.eeb.store.Subscription;
 import com.prokarma.middleware.eeb.store.SubscriptionStore;
 
 @Named("notificationProcessor")
+@Default
 public class DefaultNotificationProcessor implements NotificationProcessor {
 
 	private static Logger logger = LoggerFactory.getLogger(DefaultNotificationProcessor.class);
@@ -60,15 +62,14 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 		String topic = query.getTopic();
 		for (String messageId : msgIds) {
 			Message message = this.messageStore.get(messageId);
-			String msg = message.getMessage();
-			doProcessMessage(topic, messageId, msg);
+			doProcessMessage(topic, messageId, message.getMessage());
 		}
 	}
 
-	private void doProcessMessage(String topic, String messageId, String msg) {
+	private void doProcessMessage(String topic, String messageId, String message) {
 		List<Subscription> subscriptions = this.subscriptionStore.getSubscriptions(topic);
 		if (!subscriptions.isEmpty()) {
-			this.messsageSubscriptionStore.store(newMessageSubscriptions(msg, subscriptions, messageId));
+			this.messsageSubscriptionStore.store(newMessageSubscriptions(message, subscriptions, messageId));
 			processSubscritions(topic);
 		} else {
 			logger.info("No subscriptions for topic {}", topic);
