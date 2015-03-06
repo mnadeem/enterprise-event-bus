@@ -59,6 +59,7 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 		List<Message> messages = this.messageStore.find(query.getTopic(), query.getFrom(), query.getTo());
 		if (messages == null || messages.isEmpty()) {
 			logger.info("No Messages to forward for topic {} for given date range ", query.getTopic());
+			return ;
 		}
 		String topic = query.getTopic();
 		List<Subscription> subscriptions = subscriptions(query.getSubscriber());
