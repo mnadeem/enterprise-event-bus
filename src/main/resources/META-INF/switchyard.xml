@@ -20,7 +20,7 @@
     </sca:component>
     <sca:service name="NotificationBrokerPortType" promote="NotificationBrokerBean/NotificationBroker">
       <sca:interface.wsdl interface="NotificationBroker.wsdl#wsdl.porttype(NotificationBrokerPortType)"/>
-      <soap:binding.soap name="soap1">
+      <soap:binding.soap name="NotificationBrokerServiceBinding">
         <soap:wsdl>NotificationBroker.wsdl</soap:wsdl>
         <soap:socketAddr>:${jettyPort}</soap:socketAddr>
         <soap:contextPath>eeb</soap:contextPath>

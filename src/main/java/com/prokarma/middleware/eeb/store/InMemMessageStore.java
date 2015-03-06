@@ -6,6 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.inject.Named;
 
+import org.joda.time.DateTime;
+
 import com.prokarma.middleware.eeb.store.support.Util;
 
 @Named
@@ -22,7 +24,7 @@ public class InMemMessageStore implements MessageStore {
 	}
 
 	@Override
-	public List<String> find(String topic, Date from, Date to) {
+	public List<String> find(String topic, DateTime from, DateTime to) {
 		// TODO Auto-generated method stub
 		return null;
 	}

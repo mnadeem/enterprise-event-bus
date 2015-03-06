@@ -1,39 +1,53 @@
 package com.prokarma.middleware.eeb.service;
 
-import java.util.Date;
-
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+import org.joda.time.DateTime;
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "", propOrder = {
+    "topic",
+    "publisher",
+    "from",
+    "to"
+})
 @XmlRootElement(name="query")
 public class Query {
 
 	private String topic;
-	private Date from;
-	private Date to;
+	private DateTime from;
+	private DateTime to;
 	private String publisher;
 
 	public String getTopic() {
 		return topic;
 	}
-	public void setTopic(String topic) {
+	public Query setTopic(String topic) {
 		this.topic = topic;
+		return this;
 	}
-	public Date getFrom() {
+	public DateTime getFrom() {
 		return from;
 	}
-	public void setFrom(Date from) {
+	public Query setFrom(DateTime from) {
 		this.from = from;
+		return this;
 	}
-	public Date getTo() {
+	public DateTime getTo() {
 		return to;
 	}
-	public void setTo(Date to) {
+	public Query setTo(DateTime to) {
 		this.to = to;
+		return this;
 	}
 	public String getPublisher() {
 		return publisher;
 	}
-	public void setPublisher(String publisher) {
+	public Query setPublisher(String publisher) {
 		this.publisher = publisher;
+		return this;
 	}
 
 	@Override
