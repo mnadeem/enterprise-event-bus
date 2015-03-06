@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
 import org.switchyard.component.bean.Reference;
 
 import com.prokarma.middleware.eeb.service.Notifier;
-import com.prokarma.middleware.eeb.service.Query;
 import com.prokarma.middleware.eeb.service.model.Notification;
+import com.prokarma.middleware.eeb.service.model.Query;
 import com.prokarma.middleware.eeb.store.Message;
 import com.prokarma.middleware.eeb.store.MessageStore;
 import com.prokarma.middleware.eeb.store.MessageSubscription;
@@ -86,6 +86,9 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 	@Override
 	public void handleQuery(Query query) {
 		List<String> msgIds = this.messageStore.find(query.getTopic(), query.getFrom(), query.getTo());
+		if (msgIds == null || msgIds.isEmpty()) {
+			logger.info("No Messages to forward for topic {} for given date range ", query.getTopic());
+		}
 		for (String messageId : msgIds) {
 			List<Subscription> subscriptions = this.subscriptionStore.getSubscriptions(query.getTopic());
 			if (!subscriptions.isEmpty()) {

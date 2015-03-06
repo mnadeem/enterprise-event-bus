@@ -1,5 +1,6 @@
 package com.prokarma.middleware.eeb.store;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -25,8 +26,7 @@ public class InMemMessageStore implements MessageStore {
 
 	@Override
 	public List<String> find(String topic, DateTime from, DateTime to) {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.emptyList();
 	}
 
 	@Override

@@ -5,8 +5,8 @@ import org.switchyard.annotations.Transformer;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import com.prokarma.middleware.eeb.service.Query;
 import com.prokarma.middleware.eeb.service.model.Notification;
+import com.prokarma.middleware.eeb.service.model.Query;
 
 public final class Transformers {
 

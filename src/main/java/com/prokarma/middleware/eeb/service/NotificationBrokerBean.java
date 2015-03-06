@@ -8,6 +8,7 @@ import org.switchyard.component.bean.Service;
 
 import com.prokarma.middleware.eeb.business.NotificationProcessor;
 import com.prokarma.middleware.eeb.service.model.Notification;
+import com.prokarma.middleware.eeb.service.model.Query;
 
 @Service(NotificationBroker.class)
 public class NotificationBrokerBean implements NotificationBroker {
