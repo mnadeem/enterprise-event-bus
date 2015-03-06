@@ -41,12 +41,37 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 	public void process(Notification notification) {
 		String messageId = this.messageStore.store(newMessage(notification));
 		this.validator.validate(notification);
-		List<Subscription> subscriptions = this.subscriptionStore.getSubscriptions(notification.getTopic());
+		String topic = notification.getTopic();
+		String message = notification.getMessage();
+		doProcessMessage(topic, messageId, message);
+	}
+
+	private Message newMessage(Notification notification) {
+		return new Message(notification.getPublisher(),
+				notification.getTopic(), notification.getMessage());
+	}
+
+	@Override
+	public void handleQuery(Query query) {
+		List<String> msgIds = this.messageStore.find(query.getTopic(), query.getFrom(), query.getTo());
+		if (msgIds == null || msgIds.isEmpty()) {
+			logger.info("No Messages to forward for topic {} for given date range ", query.getTopic());
+		}
+		String topic = query.getTopic();
+		for (String messageId : msgIds) {
+			Message message = this.messageStore.get(messageId);
+			String msg = message.getMessage();
+			doProcessMessage(topic, messageId, msg);
+		}
+	}
+
+	private void doProcessMessage(String topic, String messageId, String msg) {
+		List<Subscription> subscriptions = this.subscriptionStore.getSubscriptions(topic);
 		if (!subscriptions.isEmpty()) {
-			this.messsageSubscriptionStore.store(newMessageSubscriptions(notification.getMessage(), subscriptions, messageId));
-			processSubscritions(notification.getTopic());
+			this.messsageSubscriptionStore.store(newMessageSubscriptions(msg, subscriptions, messageId));
+			processSubscritions(topic);
 		} else {
-			logger.info("No subscriptions for topic {}", notification.getTopic());
+			logger.info("No subscriptions for topic {}", topic);
 		}
 	}
 
@@ -60,6 +85,14 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 		}
 	}
 
+	private List<MessageSubscription> messageSubscriptions(String topic) {
+		return this.messsageSubscriptionStore.find(topic);
+	}
+
+	private void notifySubscriber(MessageSubscription messageSubscription) {
+		this.notifier.notify(messageSubscription);
+	}
+
 	private List<MessageSubscription> newMessageSubscriptions(String message, List<Subscription> subscriptions, String messageId) {
 		List<MessageSubscription> messageSubscriptions = new ArrayList<MessageSubscription>();
 		for (Subscription subscription : subscriptions) {
@@ -68,36 +101,5 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 					subscription.getEndpoint()));
 		}
 		return messageSubscriptions;
-	}
-
-	private Message newMessage(Notification notification) {
-		return new Message(notification.getPublisher(),
-				notification.getTopic(), notification.getMessage());
-	}
-
-	private void notifySubscriber(MessageSubscription messageSubscription) {
-		this.notifier.notify(messageSubscription);
-	}
-
-	private List<MessageSubscription> messageSubscriptions(String topic) {
-		return this.messsageSubscriptionStore.find(topic);
-	}
-
-	@Override
-	public void handleQuery(Query query) {
-		List<String> msgIds = this.messageStore.find(query.getTopic(), query.getFrom(), query.getTo());
-		if (msgIds == null || msgIds.isEmpty()) {
-			logger.info("No Messages to forward for topic {} for given date range ", query.getTopic());
-		}
-		for (String messageId : msgIds) {
-			List<Subscription> subscriptions = this.subscriptionStore.getSubscriptions(query.getTopic());
-			if (!subscriptions.isEmpty()) {
-				Message message = this.messageStore.get(messageId);
-				this.messsageSubscriptionStore.store(newMessageSubscriptions(message.getMessage(), subscriptions, messageId));
-				processSubscritions(query.getTopic());
-			} else {
-				logger.info("No subscriptions for topic {}", query.getTopic());
-			}
-		}
 	}
 }
