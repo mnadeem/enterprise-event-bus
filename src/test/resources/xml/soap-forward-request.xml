@@ -6,8 +6,8 @@
          <query>
             <topic>xyz</topic>
             <publisher>nadeem</publisher>
-            <from>2011-05-30T11:02:30.000-04:00</from>
-            <to>2011-05-30T11:02:30.000-04:00</to>
+            <from>2015-03-05T19:25:47.260+05:30</from>
+            <to>2015-03-06T19:25:47.306+05:30</to>
          </query>
       </urn:forward>
    </soapenv:Body>

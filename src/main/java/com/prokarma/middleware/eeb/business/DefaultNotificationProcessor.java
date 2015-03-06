@@ -68,7 +68,7 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 			return;
 		}
 		for (Message message : messages) {
-			List<MessageSubscription> messageSubscriptions = newMessageSubscriptions(topic, subscriptions, message.getMessage());
+			List<MessageSubscription> messageSubscriptions = newMessageSubscriptions(message.getMessage(), subscriptions, message.getId());
 			doProcessMessage(topic, messageSubscriptions);
 		}
 	}
