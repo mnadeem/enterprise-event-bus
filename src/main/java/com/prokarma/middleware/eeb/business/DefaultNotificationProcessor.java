@@ -45,7 +45,8 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 		this.validator.validate(notification);
 		String topic = notification.getTopic();
 		String message = notification.getMessage();
-		doProcessMessage(topic, messageId, message);
+		List<MessageSubscription> messageSubscriptions = buildMessageSubscriptions(topic, messageId, message);
+		doProcessMessage(topic, messageSubscriptions);
 	}
 
 	private Message newMessage(Notification notification) {
@@ -60,19 +61,39 @@ public class DefaultNotificationProcessor implements NotificationProcessor {
 			logger.info("No Messages to forward for topic {} for given date range ", query.getTopic());
 		}
 		String topic = query.getTopic();
+		List<Subscription> subscriptions = subscriptions(query.getSubscriber());
+		if (subscriptions == null || subscriptions.isEmpty()) {
+			logger.info("Subscriber {} not recognized ", query.getSubscriber());
+			return;
+		}
 		for (Message message : messages) {
-			doProcessMessage(topic, message.getId(), message.getMessage());
+			List<MessageSubscription> messageSubscriptions = newMessageSubscriptions(topic, subscriptions, message.getMessage());
+			doProcessMessage(topic, messageSubscriptions);
 		}
 	}
 
-	private void doProcessMessage(String topic, String messageId, String message) {
-		List<Subscription> subscriptions = this.subscriptionStore.getSubscriptions(topic);
-		if (!subscriptions.isEmpty()) {
-			this.messsageSubscriptionStore.store(newMessageSubscriptions(message, subscriptions, messageId));
+	private List<Subscription> subscriptions(String subscriberId) {
+		List<Subscription> subscriptions = new ArrayList<Subscription>();
+		Subscription subscription = this.subscriptionStore.get(subscriberId);
+		if (subscription != null) {
+			subscriptions.add(subscription);
+		}
+		return subscriptions;
+	}
+
+	private void doProcessMessage(String topic, List<MessageSubscription> messageSubscriptions) {
+
+		if (!messageSubscriptions.isEmpty()) {			
+			this.messsageSubscriptionStore.store(messageSubscriptions);
 			processSubscritions(topic);
 		} else {
 			logger.info("No subscriptions for topic {}", topic);
 		}
+	}
+	
+	private List<MessageSubscription> buildMessageSubscriptions(String topic, String messageId, String message) {
+		List<Subscription> subscriptions = this.subscriptionStore.getSubscriptions(topic);
+		return newMessageSubscriptions(message, subscriptions, messageId);
 	}
 
 	private void processSubscritions(String topic) {

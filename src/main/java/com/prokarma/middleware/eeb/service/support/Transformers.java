@@ -20,10 +20,9 @@ public final class Transformers {
 
 	@Transformer(from = "{urn:com.prokarma.app.middleware:enterprise-event-bus:1.0}forward")
 	public Query transformForwardToQuery(Element from) {
-		// TODO Auto-generated method stub
 		return new Query()
 			.setTopic(getElementValue(from, "topic"))
-			.setPublisher(getElementValue(from, "publisher"))
+			.setSubscriber(getElementValue(from, "subscriber"))
 			.setFrom(new DateTime(getElementValue(from, "from")))
 			.setTo(new DateTime(getElementValue(from, "to")));
 	}
@@ -36,5 +35,4 @@ public final class Transformers {
         }
         return value;
     }
-
 }

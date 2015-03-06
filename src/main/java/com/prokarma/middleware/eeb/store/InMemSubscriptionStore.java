@@ -26,4 +26,9 @@ public class InMemSubscriptionStore implements SubscriptionStore {
 		}
 		return subscriptions;
 	}
+
+	@Override
+	public Subscription get(String id) {
+		return store.get(id);
+	}
 }

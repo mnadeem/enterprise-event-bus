@@ -31,7 +31,7 @@
 			<xs:complexType name="query">
 				<xs:sequence>
 					<xs:element name="topic" type="xs:string" />
-					<xs:element name="publisher" type="xs:string" />
+					<xs:element name="subscriber" type="xs:string" />
 					<xs:element name="from" type="xs:date" />
 					<xs:element name="to" type="xs:date" />
 				</xs:sequence>

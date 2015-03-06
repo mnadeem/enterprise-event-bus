@@ -9,7 +9,7 @@ import org.joda.time.DateTime;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
     "topic",
-    "publisher",
+    "subscriber",
     "from",
     "to"
 })
@@ -19,7 +19,7 @@ public class Query {
 	private String topic;
 	private DateTime from;
 	private DateTime to;
-	private String publisher;
+	private String subscriber;
 
 	public String getTopic() {
 		return topic;
@@ -42,17 +42,19 @@ public class Query {
 		this.to = to;
 		return this;
 	}
-	public String getPublisher() {
-		return publisher;
+
+	public String getSubscriber() {
+		return subscriber;
 	}
-	public Query setPublisher(String publisher) {
-		this.publisher = publisher;
+
+	public Query setSubscriber(String subscriber) {
+		this.subscriber = subscriber;
 		return this;
 	}
 
 	@Override
 	public String toString() {
-		return String.format("Query [topic=%s, from=%s, to=%s, publisher=%s]",
-				topic, from, to, publisher);
-	}	
+		return String.format("Query [topic=%s, from=%s, to=%s, subscriber=%s]",
+				topic, from, to, subscriber);
+	}
 }

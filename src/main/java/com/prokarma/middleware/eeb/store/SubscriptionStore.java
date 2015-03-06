@@ -5,5 +5,6 @@ import java.util.List;
 public interface SubscriptionStore {
 
 	List<Subscription> getSubscriptions(String topic);
-
+	
+	Subscription get(String id);
 }
